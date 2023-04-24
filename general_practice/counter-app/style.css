@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: rgb(2, 29, 6);
+    color: white;
+}
+
+.counter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+.titleTxt{
+    font-size: 2.5rem;
+    background-color: rgb(184, 0, 101);
+    border-radius: 10px;
+    padding: 0.4em;
+    position: absolute;
+    top: 0.5em;
+}
+
+.countArea{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.numbers{
+    font-size: 5em;
+}
