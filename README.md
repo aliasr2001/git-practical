@@ -5,7 +5,8 @@ This is a general purpose git repo in which I used to practice my Git skills and
 If you like any of the project and wanna use one of them, You can enjoy :D
 & 
 If you have any concerns or wanna collaborate, Just wave at me at 
-``` Email: asr.studio2001@gmail.com 
+``` 
+    Email: asr.studio2001@gmail.com 
     OR
     Twitter: @_aliasr2001 
 ```
