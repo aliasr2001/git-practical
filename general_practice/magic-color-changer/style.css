@@ -1,0 +1,58 @@
+body{
+    padding: 0;  
+    margin: 0;
+    font-family: sans-serif;
+    background-color: rgb(30, 30, 30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+    color: white;
+}
+
+
+/* Designing color divs */
+.colorPalete{
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    align-items: center;
+    position: relative;
+}
+.color{
+    height: 2em;
+    width: 6em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    box-shadow: 5px 5px rgb(56, 56, 56);
+    
+}
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: rgb(0, 102, 255);
+}
+.violet{
+    background-color: violet;
+}
+
+.disCon{
+    border: 1px solid white;
+    height: 30%;
+    width: 50%;
+    border-radius: 3em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s;
+    text-shadow: 2px 2px 10px black;
+}
