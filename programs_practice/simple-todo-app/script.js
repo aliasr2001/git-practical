@@ -14,7 +14,7 @@ rootContainer.appendChild(topContainer)
 //TopContainer's Heading tag
 let headingTxt = document.createElement('h1')
 headingTxt.className = 'headingtxt';
-headingTxt.innerText = "What's For Today?"
+headingTxt.innerText = "What's For Today 😎?"
 topContainer.appendChild(headingTxt)
 
 // TopContainers's input tag
@@ -39,7 +39,6 @@ addBtn.className = 'addBtn';
 addBtn.innerText = 'Click OR Smash Enter';
 addBtn.disabled = 'true'
 addBtn.onclick = () => {
-    console.log('clicked')
     addToList();
     addTodoList();
     localStorage.setItem('todoList', JSON.stringify(todoList))
@@ -63,15 +62,6 @@ let todoListContainer = document.createElement('div')
 todoListContainer.className = 'todoListCon'
 btContainer.appendChild(todoListContainer)
 
-// Adding the TodoList[] todos to the bottom container 
-// todoList.forEach((i) => {
-//     let todo = document.createElement('p')
-//     todo.innerText = i
-//     todo.className = 'btTodos'
-//     btContainer.appendChild(todo)
-//     })
-
-
 
 
 // Functions are Here
@@ -85,7 +75,6 @@ const addToList = () => {
     if(listItem2 !== ""){
         todoList.unshift(listItem2);
         inputField.value = "";
-        console.log(todoList)
     }
 }
 
@@ -109,7 +98,20 @@ const addTodoList = () => {
 
 const onDeleteHandler = (index) => {
     todoList.splice(index, 1)
+    localStorage.setItem('todoList', JSON.stringify(todoList));
     addTodoList()
 }
 
+//Button Content Change Handler when width changes
+function updateButtonText() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 1280) {
+      addBtn.textContent = 'Smash It 👊';
+    } else {
+      addBtn.textContent = addBtn.innerText;
+    }
+}
+
+
+updateButtonText()
 addTodoList()

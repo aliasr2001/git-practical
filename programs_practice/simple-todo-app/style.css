@@ -109,3 +109,87 @@ body{
     color: white;
     font-size: 1em;
 }
+
+
+/* Media Queries Starts Here */
+
+@media (max-width: 1280px){
+    .btheading {
+        background-color: rgb(255, 72, 0);
+        color: white;
+        width: 6em;
+        padding: 0.3em 1em;
+        border-radius: 15px;
+        font-size: 1.7em;
+    }
+}
+
+@media (max-width: 1024px){
+    .btheading {
+        width: 6em;
+        padding: 0.3em 1em;
+        border-radius: 15px;
+        font-size: 1.7em;
+    }
+    .topContainer{
+        height: 50vh;
+    }
+}
+
+@media (max-width: 820px){
+    .topContainer{
+        height: 30vh;
+    }
+}
+
+@media (max-width: 768px){
+    .topContainer{
+        height: 33vh;
+    }
+}
+
+@media (max-width: 912px){
+    .topContainer{
+        height: 27vh;
+    }
+    .bottomContainer {
+        width: 60%;
+    }
+}
+
+@media (max-width: 414px){
+    .topContainer{
+        height: 43vh;
+    }
+}
+
+@media (max-width: 390px){
+    .topContainer{
+        height: 46vh;
+    }
+}
+@media (max-width: 360px){
+    .topContainer{
+        height: 52vh;
+    }
+}
+
+/* @media (max-width: 375px){
+    body{
+        background-color:rgb(138, 138, 138);
+    }
+    .topContainer{
+        height: 59vh;
+    }
+    .bottomContainer {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .todoCon {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+} */
