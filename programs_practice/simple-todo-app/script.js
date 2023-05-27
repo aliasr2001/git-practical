@@ -101,10 +101,15 @@ function success() {
 // Adding the TodoList[] todos to the bottom container
 const addTodoList = () => {
     let todo = ''
-    todoList.forEach((i) => {
-        todo += `<p>${i}</p>`
+    todoList.forEach((i, index) => {
+        todo += `<div class="todoCon"><p class="todoText">${i}</p><button class="todoDel" onclick="onDeleteHandler(${index})">Delete</button></div>`
     })
     todoListContainer.innerHTML = todo;
+}
+
+const onDeleteHandler = (index) => {
+    todoList.splice(index, 1)
+    addTodoList()
 }
 
 addTodoList()

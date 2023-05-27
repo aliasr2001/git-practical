@@ -86,6 +86,26 @@ body{
 .todoListCon{
     margin-left: 0.5em;
 }
-.todoListCon > p{
-    font-size: 1.5em;
+.todoCon{
+    display: flex;
+    align-items: center;
+}
+.todoText{
+    font-size: 1.1em;
+    flex: 1;
+}
+.todoDel{
+    height: 20%;
+    border: 1px solid rgb(255, 72, 0);
+    background: none;
+    padding: 0.5em 0.9em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.todoDel:hover{
+    border: none;
+    background-color: rgb(255, 47, 0);
+    color: white;
+    font-size: 1em;
 }
