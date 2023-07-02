@@ -16,3 +16,5 @@ setInterval( () => {
         followerTxt.style.fontSize = '2.5rem';
     }
 }, 10)
+
+ 
