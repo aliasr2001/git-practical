@@ -1,24 +1,52 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Axios } from "axios";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 
 export default function signUpPage () {
+    const router = useRouter();
+
     const [ user, setUser ] = React.useState({
         email: "",
         password: "",
         username: ""
     });
 
+    const [ buttonDisabled, setButtonDisabled ] = React.useState(false);
+    const [ loading, setLoading ] = React.useState(false);
+
+    useEffect(() => {
+        if(user.email.length > 0 && user.username.length > 0 && user.password.length > 0){
+            setButtonDisabled(false);
+        } else{
+            setButtonDisabled(true);
+        }
+    }, [user]);
+
     const onSignUp = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.post("/api/users/signup", user);
+            // console.log("Signup success!", response.data);
+            router.push("/login");
+            
+
+        } catch (error: any) {
+            // console.log("SignUp Failed!", error.message);
+            toast.error(error.message);
+
+        } finally {
+            setLoading(false);
+        }
     }
 
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 gap-3">
-            <h1 className="text-red-300 text-center text-3xl font-bold">Sign Up</h1>
+            <h1 className="text-red-300 text-center text-3xl font-bold">{loading ? "Signing Up..." : "SignUp"}</h1>
             <div className="flex flex-col gap-1 mb-2">
                 {/* It is a username input field */}
                 <label htmlFor="username">Username</label>
@@ -53,7 +81,7 @@ export default function signUpPage () {
                 {/* the signup button starts here */}
                 <button 
                 onClick={onSignUp}
-                className="bg-red-400 p-2 hover:bg-red-500 rounded-lg duration-300">SignUp
+                className="bg-red-400 p-2 hover:bg-red-500 rounded-lg duration-300">{buttonDisabled ? "Fill Up to SignUp" : " Now SignUp"}
                 </button>
                 {/* it the is link to login page */}
             </div>
