@@ -1,0 +1,97 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
+.navHeader{
+    background-color: white;
+    box-shadow: 0px 0px 15px gray;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+}
+
+.leftNav{
+    display: flex;
+    align-items: center;
+}
+
+.navLogo{
+    width: 12%;
+}
+
+.linkList{
+    display: flex;
+    gap: 15px
+}
+
+.pageLinks{
+    list-style: none;
+}
+
+.pageLinks > a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: 1.5em;
+    transition: all 0.3s;
+}
+
+.pageLinks > a:hover{
+    color: orangered;
+}
+
+.rightNav{
+    display: flex;
+    margin-right: 2em;
+    gap: 15px;
+}
+
+.navBtns {
+    padding: 10px 20px;
+    width: 10em;
+    font-size: 1em;
+    border: none;
+    border-radius: 0.8em;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.navBtns:hover{
+    background-color: orangered;
+    color: white;
+}
+
+.heroSection{
+    height: 100vh;
+    background-image: url("assets/bg-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.heroTitle{
+    font-size: 5em;
+    background-color: orangered;
+    box-shadow: 0px 0px 15px black;
+    padding: 0.5em;
+}
+
+.heroSub{
+    background-color: orangered;
+    padding: 0.5em;
+}
+
