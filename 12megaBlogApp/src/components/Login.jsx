@@ -1,4 +1,4 @@
-import React, { useState }} from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router'
 import { Button, Input, Logo } from '../components'
