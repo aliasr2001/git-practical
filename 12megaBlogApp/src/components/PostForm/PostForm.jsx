@@ -10,8 +10,23 @@ function PostForm({ post }) {
         defaultValues: {
             title: post?.title || '',
             content: post?.content || '',
+            slug: post?.$id || '',
+            status: post?.status || 'active',
         }
-    })
+    });
+
+    const navigate = useNavigate()
+    const userData = useSelector(state => state.auth.userData)
+
+    const Sumbit = async (data) => {
+      if (post) {
+        const file = data.image[0] ? await services.uploadFile(data.image[0]) : null
+
+        if (file){
+          services.deleteFile(post.featuredImage)
+        }
+      }
+    }
   return (
     <div>PostForm</div>
   )
