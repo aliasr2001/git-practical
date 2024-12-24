@@ -25,6 +25,28 @@ function PostForm({ post }) {
         if (file){
           services.deleteFile(post.featuredImage)
         }
+
+        const dbPost = await services.updatePost(post.$id, {
+          ...data,
+          featuredImage: file ? file.$id : undefined,
+        })
+
+        if (dbPost) {
+          navigate(`/post/${dbPost.$id}`)
+        }
+      } else {
+        const file = await services.uploadFile(data.image[0]);
+
+        if(file){
+          const fileId = file.$id;
+          data.featuredImage = fileId;
+          const dbPost = await services.createPost({...data, userId: userData.$id});
+
+          if (dbPost){
+            navigate(`/post/${dbPost.$id}`);
+          
+          }
+        }
       }
     }
   return (
