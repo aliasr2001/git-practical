@@ -66,6 +66,7 @@ function PostForm({ post }) {
         if (name === 'title')
           setValue('slug', slugTransform(value.title), { shouldValidate: true });
       })
+      return () => subcription.unsubscribe();
     }, [watch, setValue, slugTransform])
   return (
     <div>PostForm</div>
