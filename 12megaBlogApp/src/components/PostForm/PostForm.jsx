@@ -18,7 +18,7 @@ function PostForm({ post }) {
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
 
-    const Sumbit = async (data) => {
+    const Submit = async (data) => {
       if (post) {
         const file = data.image[0] ? await services.uploadFile(data.image[0]) : null
 
@@ -69,7 +69,26 @@ function PostForm({ post }) {
       return () => subcription.unsubscribe();
     }, [watch, setValue, slugTransform])
   return (
-    <div>PostForm</div>
+    <form onSubmit={handleSubmit(Submit)} className='flex flex-wrap'>
+      <div className='w-2/3 px-2'>
+        <input 
+        label='Title'
+        placeholder='Title'
+        className='mb-4'
+        {...register('title', { required: true})}
+        />
+        <input
+        label='Slug'
+        placeholder='Slug'
+        className='mb-4'
+        {...register('slug', { required: true})}
+        onInput={(e) => {
+          setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+        }}  
+        />
+        <Rte label="Content :" name='content' control={control} defaultValue={getValues('content')}/>
+      </div>
+    </form>
   )
 }
 
