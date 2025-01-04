@@ -1,12 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { store } from './store/store.js'
+import store from './store/store.js'
 import { Provider } from 'react-redux'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Home from './pages/Home.jsx'
 import { AuthLayout } from './components/index.js'
+import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
+import AllPosts from './pages/AllPosts.jsx'
+import AddPost from './pages/AddPost.jsx'
+import EditPost from './pages/EditPost.jsx'
+import Post from './pages/Post.jsx'
+
 
 const router = createBrowserRouter([
   {
