@@ -20,6 +20,7 @@ export default function Rte({
         render={({field : {onChange}}) => (
           <Editor
             initialValue={defaultValue}
+            apiKey='bisc6abkqblk3n16rrbxv1u5wq5hmwq5liov2hfzekddwgcq'
             init={{
               height: 500,
               menubar: false,

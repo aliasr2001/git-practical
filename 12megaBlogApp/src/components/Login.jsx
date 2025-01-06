@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router'
 import { Button, Input, Logo } from '../components'
 import { login as storeLogin } from '../store/authSlice' // for storing the state in store
 import services from '../appwrite/auth' // for calling the API
-import { set, useForm } from 'react-hook-form' // for form validation
+import { useForm } from 'react-hook-form' // for form validation
 
 function Login() {
 
@@ -75,7 +75,9 @@ function Login() {
                     <Button
                     type='submit'
                     className='w-full'
-                    />
+                    >
+                    Login
+                    </Button>
                 </div>
             </form>
         </div>
