@@ -14,22 +14,23 @@ function Login() {
     const [error, setError] = useState('')
 
     // Function to handle the login form submission
-    const login = async (data) => {
+    const login = async(data) => {
         setError('')
         try {
             const session = await services.login(data)
+            console.log('Session:', session) // Debugging log
             if (session){
                 const userData = await services.getCurrentUser()
+                console.log('User Data:', userData) // Debugging log
                 if (userData){
                     dispatch(storeLogin(userData))
-                    navigate('/')
+                    navigate("/")
                 }
             }
         } catch (error) {
             setError(error.message)
         }
     }
-
   return (
     <div className='flex items-center justify-center w-full'>
         <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>

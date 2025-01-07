@@ -35,30 +35,39 @@ function PostForm({ post }) {
           navigate(`/post/${dbPost.$id}`)
         }
       } else {
-        const file = await services.uploadFile(data.image[0]);
+        const file = await services.uploadFile(data.image[0]);  
 
-        if(file){
+        // ... inside PostForm.jsx, within the Submit function's else block:
+        
+        if (file) {
           const fileId = file.$id;
-          data.featuredImage = fileId;
-          const dbPost = await services.createPost({...data, userId: userData.$id});
-
-          if (dbPost){
-            navigate(`/post/${dbPost.$id}`);
-          
+          console.log("userData:", userData)
+          console.log("userData.$id:", userData.userData.$id); // Check if userData exists
+        
+          if (userData && userData.userData.$id) { // <-- Add this check
+            const dbPost = await services.createPost({ ...data, userId: userData.userData.$id, featuredImage: fileId });
+            console.log("Data sent to createPost:", { ...data, userId: userData.$id, featuredImage: fileId }); // Log the payload
+        
+            if (dbPost) {
+              navigate(`/post/${dbPost.$id}`);
+            }
+          } else {
+            console.error("userData or userData.$id is missing!"); // Handle the missing userData case.
           }
         }
+        
       }
     }
 
     const slugTransform = useCallback((value) => {
-      if (value && typeof value === 'string')
+      if (value && typeof value === 'string') {
         return value
         .trim()
         .toLowerCase()
         .replace(/[^a-zA-Z\d\s]+/g, "-")
         .replace(/\s/g, "-");
-      
-      return '';
+      }
+      return "";
     })
 
     useEffect(() => {
@@ -71,13 +80,13 @@ function PostForm({ post }) {
   return (
     <form onSubmit={handleSubmit(Submit)} className='flex flex-wrap'>
       <div className='w-2/3 px-2'>
-        <input 
+        <Input 
         label='Title'
         placeholder='Title'
         className='mb-4'
         {...register('title', { required: true})}
         />
-        <input
+        <Input
         label='Slug'
         placeholder='Slug'
         className='mb-4'
@@ -98,8 +107,8 @@ function PostForm({ post }) {
           />
           {post && (
               <div className="w-full mb-4">
-                  <img
-                      src={appwriteService.getFilePreview(post.featuredImage)}
+                  <img 
+                      src={post.featuredImage && services.getFilePreview(post.featuredImage)}
                       alt={post.title}
                       className="rounded-lg"
                   />

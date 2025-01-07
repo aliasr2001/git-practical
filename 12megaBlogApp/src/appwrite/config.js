@@ -27,7 +27,6 @@ export class Service{
                     status,
                     userId
                 }
-
             )
             
         } catch (error) {
@@ -95,7 +94,7 @@ export class Service{
 
     async uploadFile(file){
         try {
-            await this.bucket.createFile(
+            return await this.bucket.createFile(
                 Conf.bucketId,
                 ID.unique(),
                 file
