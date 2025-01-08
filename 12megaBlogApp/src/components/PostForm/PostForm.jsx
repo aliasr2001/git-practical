@@ -35,27 +35,28 @@ function PostForm({ post }) {
           navigate(`/post/${dbPost.$id}`)
         }
       } else {
-        const file = await services.uploadFile(data.image[0]);  
+        if (data) {
+          const file = await services.uploadFile(data.image[0]);  
 
-        // ... inside PostForm.jsx, within the Submit function's else block:
-        
-        if (file) {
-          const fileId = file.$id;
-          console.log("userData:", userData)
-          console.log("userData.$id:", userData.userData.$id); // Check if userData exists
-        
-          if (userData && userData.userData.$id) { // <-- Add this check
-            const dbPost = await services.createPost({ ...data, userId: userData.userData.$id, featuredImage: fileId });
-            console.log("Data sent to createPost:", { ...data, userId: userData.$id, featuredImage: fileId }); // Log the payload
-        
-            if (dbPost) {
-              navigate(`/post/${dbPost.$id}`);
+          // ... inside PostForm.jsx, within the Submit function's else block:
+          
+          if (file) {
+            const fileId = file.$id;
+            // console.log("userData:", userData)
+            // console.log("userData.$id:", userData.userData.$id); // Check if userData exists
+          
+            if (userData && userData.userData.$id) { // <-- Add this check
+              const dbPost = await services.createPost({ ...data, userId: userData.userData.$id, featuredImage: fileId });
+              console.log("Data sent to createPost:", { ...data, userId: userData.$id, featuredImage: fileId }); // Log the payload
+          
+              if (dbPost) {
+                navigate(`/post/${dbPost.$id}`);
+              }
+            } else {
+              console.error("userData or userData.$id is missing!"); // Handle the missing userData case.
             }
-          } else {
-            console.error("userData or userData.$id is missing!"); // Handle the missing userData case.
           }
         }
-        
       }
     }
 
